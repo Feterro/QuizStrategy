@@ -1,5 +1,6 @@
 package Strategy;
 
+import ArtesMarciales.ArteMarcial;
 import ArtesMarciales.Ataque;
 import Strategy.StrategyArteMarcial;
 import Strategy.StrategyAtaque;
@@ -11,13 +12,15 @@ import java.util.Random;
 
 public class Jugador {
 
-    private StrategyArteMarcial[] artesMarciales;
+    public StrategyArteMarcial[] artesMarciales;
     private StrategyAtaque estrategiaAtaque;
     public StrategyArteMarcial arteMarcialActual;
     private int vida;
+    public Jugador enemigo;
 
-    public Jugador(AttackStrategiesEnum attackType){
+    public Jugador(AttackStrategiesEnum attackType,Jugador enemigo){
         this.vida = 200;
+        this.enemigo = enemigo;
         reasignarArtesMarciales();
         switch (attackType){
             case PLAYER1:
@@ -42,17 +45,25 @@ public class Jugador {
 
     public String recibirAtaques(ArrayList<Ataque> ataques){
         String comboString = "";
-        int total = 0;
         for (Ataque ataque:ataques) {
-            total += ataque.getDano();
+            ataque.apply();
             comboString += ataque.toString();
         }
         return  comboString;
     }
 
-    //Pantalla
-    //Jugador1
-    //Jugador2
-    //Jugador2.recibirDano(Jugador1.getCombo())
+    public void cura(int cura) {
+        this.vida += cura;
+    }
 
+    public void recibirDano(int dano) {
+        this.vida -= dano;
+    }
+
+
+    //Desde pantalla
+    //Cuando se toca generar combo => ataques1 = getCombo() , ataques2 = getCombo()
+    //Cuando se ataca => Jugador1.recibirAtaques(ataques2)
+    //Jugador2.recibirAtaques(ataque1)
+    //Tomar en cuenta que ya se tiene el enemigo adentro...
 }

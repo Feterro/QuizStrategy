@@ -1,4 +1,5 @@
 package ArtesMarciales;
+import Strategy.Jugador;
 
 public class KungFu extends ArteMarcial{
 
@@ -6,18 +7,18 @@ public class KungFu extends ArteMarcial{
         super(nombre, imagen);
     }
 
-    public Ataque ataque1(){
-        Ataque ataque = new Ataque("Puños", 30);
+    public Ataque ataque1(Jugador ataca, Jugador atacado){
+        Ataque ataque = new Ataque(ataca, atacado, "Puños", 30);
         return  ataque;
     }
 
-    public Ataque ataque2(){
-        Ataque ataque = new Ataque("Kuan tsu",41);
+    public Ataque ataque2(Jugador ataca, Jugador atacado){
+        Ataque ataque = new Ataque(ataca, atacado, "Kuan tsu",41);
         return  ataque;
     }
 
-    public AtaqueEspecial ataque3(){
-        AtaqueEspecial ataque = new AtaqueEspecial("Pei tsu",45, 30);
+    public AtaqueEspecial ataque3(Jugador ataca, Jugador atacado){
+        AtaqueEspecial ataque = new AtaqueEspecial(ataca, atacado, "Pei tsu",45, 30, 14);
         return  ataque;
     }
 
