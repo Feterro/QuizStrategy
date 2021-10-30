@@ -9,19 +9,24 @@ public class Ataque {
     protected Jugador ataca;
     protected Jugador atacado;
 
+    public Ataque(String nombre, int dano){
+        this.nombre = nombre;
+        this.dano = dano;
+    }
 
-    public Ataque(Jugador ataca,Jugador atacado,String nombre, int dano) {
+    public Ataque(Jugador ataca, Jugador atacado, String nombre, int dano) {
         this.nombre = nombre;
         this.dano = dano;
         this.ataca = ataca;
         this.atacado = atacado;
     }
 
-    public void apply(){
+
+    public void apply() {
         danar();
     }
 
-    public void danar(){
+    public void danar() {
         atacado.recibirDano(dano);
     }
 
@@ -33,7 +38,24 @@ public class Ataque {
         return nombre;
     }
 
-    public String toString(){
+    public String toString() {
         return nombre;
+
+    }
+
+    public Jugador getAtaca() {
+        return ataca;
+    }
+
+    public void setAtaca(Jugador ataca) {
+        this.ataca = ataca;
+    }
+
+    public Jugador getAtacado() {
+        return atacado;
+    }
+
+    public void setAtacado(Jugador atacado) {
+        this.atacado = atacado;
     }
 }

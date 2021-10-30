@@ -15,11 +15,14 @@ public class AtaqueP2 extends StrategyAtaque {
 
     @Override
     public ArrayList<Ataque> ataque() {
+        jugador.artesEscogidas.clear();
         ArrayList<Ataque> ataques = new ArrayList<>();
         int numeroDeAtaques = ThreadLocalRandom.current().nextInt(3, 6);
         for (int i = 0;i<numeroDeAtaques;i++){
             int arteMarcialIndex = ThreadLocalRandom.current().nextInt(0, 3);
-            ataques.add(jugador.artesMarciales[arteMarcialIndex].ataque(jugador,jugador.enemigo));
+            ataques.add(jugador.artesMarciales.get(arteMarcialIndex).ataque(jugador,jugador.enemigo));
+            jugador.artesEscogidas.add(jugador.artesMarciales.get(arteMarcialIndex));
+//            System.out.println(jugador.artesMarciales.get(arteMarcialIndex).ataque(jugador,jugador.enemigo));
         }
         return ataques;
     }

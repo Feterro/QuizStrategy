@@ -5,9 +5,13 @@ import Strategy.Jugador;
 public class AtaqueEspecial extends Ataque{
     private int vida;
     private int danoExtra;
-    private Jugador ataca;
-    private Jugador atacado;
 
+    public AtaqueEspecial(String nombre, int dano, int vida, int danoExtra) {
+        super(nombre, dano);
+        this.vida = vida;
+        this.danoExtra = danoExtra;
+    }
+    
     public AtaqueEspecial(Jugador ataca,Jugador atacado,String nombre, int dano, int vida, int danoExtra) {
         super(ataca,atacado,nombre, dano);
         this.vida = vida;
